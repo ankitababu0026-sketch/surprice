@@ -2,20 +2,19 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <title>Will You Be Mine?</title>
     <link rel="stylesheet" href="style.css">
+    <title>Will You Be Mine?</title>
 </head>
 <body>
-    <!-- bg.mp4 -->
     <video autoplay loop muted playsinline id="bg-video">
-        <source src="background.mp4" type="video/mp4">
+        <source src="bg.mp4" type="video/mp4">
     </video>
 
     <div class="container">
         <h1>क्या तुम मेरी बनोगी?</h1>
         <div class="buttons">
-            <button id="yesBtn" onclick="alert('मुझे पता था! ❤️')">हाँ</button>
-            <button id="noBtn" onmouseover="moveButton()">नहीं</button>
+            <button onclick="alert('मुझे पता था! ❤️')">हाँ</button>
+            <button id="noBtn" onmouseover="moveButton()" onclick="moveButton()">नहीं</button>
         </div>
     </div>
     <script src="script.js"></script>
