@@ -1,0 +1,5 @@
+body { display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #ffd1dc; font-family: sans-serif; }
+.container { text-align: center; }
+.buttons { margin-top: 20px; position: relative; }
+button { padding: 10px 20px; font-size: 18px; cursor: pointer; }
+#noBtn { position: absolute; margin-left: 10px; }
