@@ -5,33 +5,22 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #ffd1dc;
-    font-family: 'Arial', sans-serif;
-    overflow: hidden; /* बटन को स्क्रीन से बाहर जाने से रोकने के लिए */
-}
-
-.container {
-    text-align: center;
-}
-
-.buttons {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-button {
-    padding: 10px 20px;
-    font-size: 18px;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    background-color: #ff6b81;
+    font-family: sans-serif;
     color: white;
+    overflow: hidden;
 }
 
-#noBtn {
-    /* इसे यहाँ से हटा दें या यहाँ रहने दें, JS इसे हैंडल कर लेगा */
-    transition: all 0.2s;
+#bg-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+    object-fit: cover;
 }
+
+.container { text-align: center; background: rgba(0,0,0,0.3); padding: 20px; border-radius: 10px; }
+.buttons { margin-top: 20px; position: relative; height: 100px; }
+button { padding: 10px 20px; font-size: 18px; cursor: pointer; }
+#noBtn { position: absolute; }
