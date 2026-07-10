@@ -2,76 +2,73 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Will You Be Mine?</title>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <style>
+        * { box-sizing: border-box; }
         body { 
             margin: 0; height: 100vh; display: flex; justify-content: center; align-items: center; 
-            background: linear-gradient(135deg, #ff9a9e 0%, #a18cd1 100%); 
-            font-family: sans-serif; overflow: hidden; 
+            background: linear-gradient(135deg, #ff9a9e, #a18cd1); 
+            font-family: sans-serif; overflow: hidden; touch-action: manipulation;
         }
         .container { 
             text-align: center; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); 
-            padding: 30px; border-radius: 30px; width: 85%; max-width: 350px; 
-            border: 2px solid rgba(255, 255, 255, 0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
-            z-index: 10;
+            padding: 20px; border-radius: 20px; width: 90%; max-width: 320px; 
+            border: 2px solid rgba(255, 255, 255, 0.3); z-index: 10;
         }
-        h1 { color: #fff; font-size: 22px; margin-bottom: 25px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); }
-        button { padding: 12px 30px; font-size: 18px; border: none; border-radius: 50px; cursor: pointer; font-weight: bold; width: 100%; margin: 10px 0; transition: 0.3s; }
+        h1 { color: #fff; font-size: 20px; margin-bottom: 20px; }
+        .btn-box { display: flex; flex-direction: column; gap: 10px; align-items: center; min-height: 100px; }
+        button { padding: 10px 25px; font-size: 16px; border: none; border-radius: 30px; cursor: pointer; font-weight: bold; width: 140px; transition: 0.2s; }
         #yesBtn { background: #ff4757; color: white; }
         #noBtn { background: #6c5ce7; color: white; position: relative; }
         
-        /* गुब्बारे और दिल का एनिमेशन */
-        .item { position: absolute; font-size: 25px; animation: floatUp 6s linear infinite; z-index: 1; pointer-events: none; }
+        .item { position: absolute; font-size: 20px; animation: floatUp 6s linear infinite; z-index: 1; pointer-events: none; }
         @keyframes floatUp { 0% { bottom: -10%; opacity: 1; } 100% { bottom: 110%; opacity: 0; } }
         
         .popup { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.8); justify-content: center; align-items: center; z-index: 100; }
-        .popup-content { background: white; padding: 20px; border-radius: 25px; width: 85%; max-width: 300px; text-align: center; }
-        .popup-content img { width: 100%; border-radius: 15px; }
-        .glow-text { color: #d63031; font-size: 17px; margin-top: 15px; font-weight: bold; }
+        .popup-content { background: white; padding: 15px; border-radius: 20px; width: 90%; max-width: 280px; text-align: center; }
+        .popup-content img { width: 100%; height: auto; border-radius: 15px; }
     </style>
 </head>
 <body>
-
-    <!-- गुब्बारे और दिल उड़ाने वाला स्क्रिप्ट -->
-    <script>
-        function createItem() {
-            let item = document.createElement('div');
-            item.className = 'item';
-            item.innerHTML = Math.random() > 0.5 ? '🎈' : '❤️';
-            item.style.left = Math.random() * 100 + '%';
-            item.style.animationDuration = (Math.random() * 3 + 4) + 's';
-            document.body.appendChild(item);
-            setTimeout(() => item.remove(), 7000);
-        }
-        setInterval(createItem, 600);
-    </script>
-
     <div class="container">
         <h1>बाबू, क्या तुम मेरे से प्यार करती हो और मेरे साथ रहना चाहोगी?</h1>
-        <button id="yesBtn" onclick="showGift()">Yes</button>
-        <button id="noBtn" onmouseover="moveNo()">No</button>
+        <div class="btn-box">
+            <button id="yesBtn" onclick="showGift()">Yes</button>
+            <button id="noBtn" onmouseover="moveNo()" onclick="moveNo()">No</button>
+        </div>
     </div>
 
     <div id="giftPopup" class="popup">
         <div class="popup-content">
-            <img src="https://i.ibb.co/560Zg3J/rabbit-hearts.gif" alt="Surprise">
-            <h2 class="glow-text">हाँ बाबू, मुझे पता था कि तुम भी मेरे से प्यार करती हो! <br>I love you too baby! ummmaaaaa... 😘</h2>
+            <img src="https://media.tenor.com/2s1c1vL_r8AAAAAi/rabbit-hearts.gif" alt="Surprise">
+            <h2 style="color:#d63031; font-size: 16px;">हाँ बाबू, I love you too! ummmaaaaa... 😘</h2>
         </div>
     </div>
 
     <script>
+        // गुब्बारे और दिल
+        setInterval(() => {
+            let item = document.createElement('div');
+            item.className = 'item';
+            item.innerHTML = Math.random() > 0.5 ? '🎈' : '❤️';
+            item.style.left = Math.random() * 90 + '%';
+            document.body.appendChild(item);
+            setTimeout(() => item.remove(), 6000);
+        }, 800);
+
         function showGift() {
             document.getElementById('giftPopup').style.display = 'flex';
-            confetti({ particleCount: 300, spread: 150, origin: { y: 0.6 } });
+            confetti({ particleCount: 200, spread: 100 });
         }
+
         function moveNo() {
             const noBtn = document.getElementById('noBtn');
-            noBtn.style.position = 'absolute';
-            // यह अब बार-बार उछलेगा और कहीं भी जाएगा
-            noBtn.style.left = Math.random() * (window.innerWidth - 100) + 'px';
-            noBtn.style.top = Math.random() * (window.innerHeight - 50) + 'px';
+            // अब यह बटन सिर्फ यस के आसपास खिसकेगा
+            const newX = (Math.random() - 0.5) * 100;
+            const newY = (Math.random() - 0.5) * 100;
+            noBtn.style.transform = `translate(${newX}px, ${newY}px)`;
         }
     </script>
 </body>
