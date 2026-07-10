@@ -6,17 +6,22 @@
     <title>Will You Be Mine?</title>
 </head>
 <body>
-    <video autoplay loop muted playsinline id="bg-video">
-        <source src="bg.mp4" type="video/mp4">
-    </video>
-
     <div class="container">
-        <h1>क्या तुम मेरी बनोगी?</h1>
+        <h1>Will you be mine?</h1>
         <div class="buttons">
-            <button onclick="alert('मुझे पता था! ❤️')">हाँ</button>
-            <button id="noBtn" onmouseover="moveButton()" onclick="moveButton()">नहीं</button>
+            <button id="yesBtn" onclick="showGift()">Yes</button>
+            <button id="noBtn" onmouseover="moveButton()" onclick="moveButton()">No</button>
         </div>
     </div>
+
+    <div id="giftPopup" class="popup">
+        <div class="popup-content">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJqbmV4dG9nZ2x5bHl4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/TjuTpwN48y7hF357qO/giphy.gif" alt="Gift">
+            <h2>I knew it! ❤️</h2>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
